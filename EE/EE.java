@@ -63,7 +63,7 @@ public class EE{
     //action: cree un ensemble a partir dune chaine de caractere
         this(max);
         String str[];
-        str = strEE.split(" ");
+        str = strEE.split(",");
         for(int i=0; i < str.length; i++){
             this.ensTab[i] = Integer.parseInt(str[i]);
             this.cardinal++;
@@ -214,17 +214,17 @@ public class EE{
     //resultat: retourne -1 si x nest pas dans this et this est plein ,msinon si x est deja dans this retourne 0 sinon ajoute x a this et retourne 1
     //strategie: utilise la methode contient,deborde et ajoutPratique
     
-    if(this.contient(x)){
-        return 0;
-    }
-    else if (this.deborde()){
-        return -1;
-    }
-        else{
-            this.ajoutPratique(x);
-            return 1;
+        if(this.contient(x)){
+            return 0;
         }
-    }
+        else if (this.deborde()){
+            return -1;
+        }
+            else{
+                this.ajoutPratique(x);
+                return 1;
+            }
+        }
 
 
 
