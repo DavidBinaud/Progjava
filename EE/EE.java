@@ -263,7 +263,7 @@ public class EE{
             }
             return e2.contient(this.ensTab[i]);
             }
-            else if(this.cardinal == e2.cardinal){
+            else {
                     while(i < this.ensTab.length && e2.contient(this.ensTab[i])){
                 
                         i++;
@@ -271,10 +271,6 @@ public class EE{
                     return e2.contient(this.ensTab[i]);
 
                 }
-                else{
-                    return false;
-                }
-
         
     }
 }
