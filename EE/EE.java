@@ -63,7 +63,7 @@ public class EE{
     //action: cree un ensemble a partir dune chaine de caractere
         this(max);
         String str[];
-        str = strEE.split(",");
+        str = strEE.split(" ");
         for(int i=0; i < str.length; i++){
             this.ensTab[i] = Integer.parseInt(str[i]);
             this.cardinal++;
@@ -151,13 +151,17 @@ public class EE{
   ////////////////////////////////////////////////////////////////////////////////////////////
     
     
-    /*private int retraitPratique(int x){
+    private int retraitPratique(int i){
     //p_r: 0 <= i <= this.cardinal
     //resultat: supprime this.ensTab[i] de l'ensemble courant et le renvoie
-    //strategie: utilise la methode contientPratique
+    //strategie:
+        int k = this.ensTab[i] ;
         
-        return
-    }*/
+        this.ensTab[i] = this.ensTab[this.cardinal-1];
+
+        this.cardinal--;
+        return k;
+    }
 
 
 //////////////////////////////////////////////////////////////////////////////////////////// 
@@ -187,21 +191,16 @@ public class EE{
     //p_r:aucun
     //resultat: renvoi true ssi x est appartient a this et est retiré de this, sinon renvoie false
     //strategie: utilise la methode contientPratique,deborde et retraitPratique
-    
-    if(!this.contient(x)){
+    int i = this.contientPratique(x); 
+    if(i == -1){
         return false;
     }
-    else if (this.deborde()){
-        return false;
-    }
-        else{
-            int i = this.contientPratique(x);
-            this.ensTab[i] = this.ensTab[i] + this.ensTab[this.cardinal];
-            this.ensTab[this.cardinal] = this.ensTab[i] - this.ensTab[this.cardinal];
-            this.ensTab[i] = this.ensTab[i] - this.ensTab[this.cardinal];
-            this.cardinal--;
+    else{
+
+           this.retraitPratique(i);
             return true;
         }
+        
     }
 
 
@@ -232,24 +231,50 @@ public class EE{
 
 
     public boolean estInclus(EE e2){
-        int i,k;
-        i = 0;k=0;
-        while(i < this.cardinal){
-            while (k < e2.cardinal){
-                if (this.ensTab[i] == e2.ensTab[k]){
-                    i++;
-                }
-
-                k++;
-            }
-            i++;
-            k=0;
-        }
+        //p-r: aucun
+        //resultat: renvoie true ssi this est inclus dans e2, renvoie false sinon
+        //strategie: utilise contientPratique et une boucle while
+        int i = 0;
+        boolean inclus = false;
 
 
-        return i == this.cardinal & k == e2.cardinal;
+        return inclus;
     }
     
 
 
+
+
+//////////////////////////////////////////////////////////////////////////////////////////// 
+    
+
+    public boolean EstEgal(EE e2){
+        //p-r: aucun
+        //resultat: renvoie true ssi this est égal à e2
+        int i = 0;
+
+        if (this.cardinal > e2.cardinal){
+            return false;
+        }
+        else if (this.cardinal < e2.cardinal){
+            while(i < this.ensTab.length && e2.contient(this.ensTab[i])){
+                
+                i++;
+            }
+            return e2.contient(this.ensTab[i]);
+            }
+            else if(this.cardinal == e2.cardinal){
+                    while(i < this.ensTab.length && e2.contient(this.ensTab[i])){
+                
+                        i++;
+                    }
+                    return e2.contient(this.ensTab[i]);
+
+                }
+                else{
+                    return false;
+                }
+
+        
+    }
 }
