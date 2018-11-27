@@ -236,9 +236,18 @@ public class EE{
         //strategie: utilise contientPratique et une boucle while
         int i = 0;
         boolean inclus = false;
+            if ( this.cardinal > e2.cardinal){
+                return false;
+            }
+            else{
+                while (i < this.cardinal && e2.contient(this.ensTab[i])){
 
+                i++;
+                }
 
-        return inclus;
+               return i == this.cardinal;
+            }
+
     }
     
 
@@ -251,26 +260,85 @@ public class EE{
     public boolean EstEgal(EE e2){
         //p-r: aucun
         //resultat: renvoie true ssi this est égal à e2
-        int i = 0;
-
-        if (this.cardinal > e2.cardinal){
-            return false;
-        }
-        else if (this.cardinal < e2.cardinal){
-            while(i < this.ensTab.length && e2.contient(this.ensTab[i])){
-                
-                i++;
-            }
-            return e2.contient(this.ensTab[i]);
-            }
-            else {
-                    while(i < this.ensTab.length && e2.contient(this.ensTab[i])){
-                
-                        i++;
-                    }
-                    return e2.contient(this.ensTab[i]);
-
-                }
         
+
+        return this.cardinal == e2.cardinal && this.estInclus(e2);
+           
+        }
+
+////////////////////////////////////////////////////////////////////////////////////////////   
+
+    public boolean estDisjoint(EE e2){
+    //p_r: aucun
+    //resultat: renvoi vrai ssi this et e2 n'ont aucun elements en commun
+        boolean Disjoint = true;
+        int i = 0;
+        while(i < this.cardinal & Disjoint){
+            if(e2.contient(ensTab[i])){
+                Disjoint = false;
+            }
+
+            i++;
+        }
+
+
+
+
+        return Disjoint;
     }
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+    public EE intersection(EE e2){
+    //p_r: EER.lengt == au cardinal le plus petit
+    //resultat: renvoie un rnsemble qui contient les element contenu a la fois dans this et dans e2
+    //strategie: utilise contient
+        EE e3 = new EE (this.cardinal);
+
+        for(int i = 0; i < this.cardinal; i++){
+           
+            if(e2.contient(this.ensTab[i])){
+                e3.ajoutPratique(this.ensTab[i]);
+                }
+        }
+
+
+    return e3;
+
+    }
+
+ ////////////////////////////////////////////////////////////////////////////////////////////   
+
+    public EE reunion (EE e2){
+        EE e3 = new EE (this.cardinal+e2.cardinal);
+
+        for (int i = 0; i < this.cardinal ;i++){
+            e3.ajoutPratique(this.ensTab[i]);
+        }
+
+        for (int k =0; k < e2.cardinal ;k++){
+            if(!e3.contient(e2.ensTab[k])){
+            e3.ajoutPratique(e2.ensTab[k]);}
+        }
+
+
+        return e3;
+    }
+
+////////////////////////////////////////////////////////////////////////////////////////////
+    public EE difference(EE e2){
+        EE e3 = (this);
+        EE intersection = (this.intersection(e2));
+
+        for(int i = 0; i < intersection.cardinal; i++){
+            e3.retraitElt(intersection.ensTab[i]);
+        }
+
+            
+
+
+
+        return e3;
+    }
+////////////////////////////////////////////////////////////////////////////////////////////
 }
