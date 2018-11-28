@@ -3,7 +3,9 @@ public class Voiture {
 
 	private String nom;
 
-	private int position;
+	private int posx;
+	
+	private int posy;
 
 	private int sens;
 
@@ -17,7 +19,8 @@ public class Voiture {
 	*/
 	this.nom=unNom;
 	this.vitesse=uneVitesse;
-	this.position=0;
+	this.posx=0;
+	this.posy=0;
 	this.sens=1;
 
 	}
@@ -28,7 +31,8 @@ public class Voiture {
 	* de this (sous la forme de votre choix)
 	*/
 		String ch = "nom: " + this.nom 
-				+ "\nposition: " + this.position 
+				+ "\npositionx: " + this.posx 
+				+ "\npositiony:" + this.posy
 				+ "\nsens: " + this.sens 
 				+ "\nvitesse: " + this.vitesse;
 		
@@ -80,7 +84,12 @@ public class Voiture {
 	
 	public void faitDemiTour(){
 	/* action : fait faire un demi-tour `a this */
-		this.sens = this.sens * -1;
+		if (this.sens == 1){this.sens = 3;}
+		else if (this.sens == 2){this.sens = 4;}
+		      else if (this.sens == 3){
+		          this.sens=1;}
+		          else{
+		              this.sens=2;}
 	}
 
 	
@@ -91,8 +100,13 @@ public class Voiture {
 	* action : fait avancer this d’une distance ´egale `a sa vitesse dans son sens de
 	* d´eplacement (`a compl´eter)
 	*/
-		
-		this.position = this.position + this.vitesse;
+	   
+		if (this.sens == 1){this.posy = this.posy + this.vitesse;}
+		else if (this.sens == 2){this.posx = this.posx + this.vitesse;}
+		      else if (this.sens == 3){
+		          this.posy = this.posy - this.vitesse;}
+		          else{
+		             this.posx = this.posx - this.vitesse;}
 		
 		
 	}
