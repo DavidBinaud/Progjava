@@ -21,7 +21,7 @@ public class Voiture {
 	this.vitesse=uneVitesse;
 	this.posx=0;
 	this.posy=0;
-	this.sens=1;
+	this.sens=2;
 
 	}
 
@@ -52,7 +52,7 @@ public class Voiture {
 	char espace = ' ';
 	String nbespace="";
 
-	for (int i=0;i<=this.positionx;i++){
+	for (int i=0;i<=this.posx;i++){
 		nbespace = nbespace + espace;
 	}
 
@@ -73,10 +73,10 @@ public class Voiture {
 	/*///////////////////////////////////////////////////////////////////////////*/
 	
 	public boolean depasse(int limite){
-	/* r´esultat : retourne vrai si et seulement si la position de this est
+	/* r´esultat : retourne vrai si et seulement si la positionx de this est
 	* sup´erieure ou ´egale `a limite
 	*/
-	return this.position >= limite ;
+	return this.posx >= limite ;
 	}
 
 	
@@ -130,7 +130,7 @@ public class Voiture {
 	/*///////////////////////////////////////////////////////////////////////////*/
 
 	public int ecart(Voiture v2){
-		int distance = this.position - v2.position;
+		int distance = this.posx - v2.posx;
 		return distance;
 	}
 

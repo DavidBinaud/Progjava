@@ -8,7 +8,7 @@ public class MainCourse {
 		v1 = new Voiture ("Titi",2);
 		v2 = new Voiture ("Poto",1);
 
-		c1 = new Course (v1,v2,15);
+		c1 = new Course (v1,v2,15,15);
 
 		System.out.println("\nLa voiture qui a gagné est: " + c1.deroulement().leNom());
 
