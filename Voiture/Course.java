@@ -7,15 +7,18 @@ public class Course {
 	
 	private int longueur;
 	
+	private int largeur;
+	
 	
 
-	public Course (Voiture uneVoit1, Voiture uneVoit2, int longueur){
+	public Course (Voiture uneVoit1, Voiture uneVoit2, int longueur,int largeur){
 	/* pr´e-requis : longueur > 0 et les voiture doivent exister
 	* action : Constructeur d'une course 
 	*/
 		this.Voiture1 = uneVoit1;
 		this.Voiture2 = uneVoit2;
 		this.longueur = longueur;
+		this.largeur = largeur;
 		
 	}
 	
@@ -30,7 +33,8 @@ public class Course {
 		
 		String ch = "Voiture 1: " + this.Voiture1 
 				+ "\n Voiture 2: " + this.Voiture2 
-				+ "\n Longueur piste: " + this.longueur ;
+				+ "\n Longueur piste: " + this.longueur 
+				+ "\n Largeur piste: " + this.largeur;
 		
 		
 		
@@ -51,7 +55,7 @@ public class Course {
 	*/
 
 
-		Voiture VoitureGagnante = Voiture1;
+		Voiture VoitureGagnante = null;
 		while (!this.Voiture1.depasse(this.longueur) & !this.Voiture2.depasse(this.longueur)){
 			Ut.clearConsole();
 			System.out.print(this.Voiture1.toString2());
