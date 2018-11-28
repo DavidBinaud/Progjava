@@ -31,8 +31,8 @@ public class Voiture {
 	* de this (sous la forme de votre choix)
 	*/
 		String ch = "nom: " + this.nom 
-				+ "\npositionx: " + this.posx 
-				+ "\npositiony:" + this.posy
+				+ "\nposition: " + this.posx 
+				+ "," + this.posy
 				+ "\nsens: " + this.sens 
 				+ "\nvitesse: " + this.vitesse;
 		
@@ -52,7 +52,7 @@ public class Voiture {
 	char espace = ' ';
 	String nbespace="";
 
-	for (int i=0;i<=this.position;i++){
+	for (int i=0;i<=this.positionx;i++){
 		nbespace = nbespace + espace;
 	}
 
