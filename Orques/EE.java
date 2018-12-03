@@ -189,7 +189,7 @@ public class EE{
 		    
 		    public boolean retraitElt(int x){
 		    //p_r:aucun
-		    //resultat: renvoi true ssi x est appartient a this et est retiré de this, sinon renvoie false
+		    //resultat: renvoi true ssi x est appartient a this et est retire de this, sinon renvoie false
 		    //strategie: utilise la methode contientPratique,deborde et retraitPratique
 		    int i = this.contientPratique(x); 
 		    if(i == -1){
@@ -259,7 +259,7 @@ public class EE{
 
 		    public boolean EstEgal(EE e2){
 		        //p-r: aucun
-		        //resultat: renvoie true ssi this est égal à e2
+		        //resultat: renvoie true ssi this est egal a e2
 		        
 
 		        return this.cardinal == e2.cardinal && this.estInclus(e2);
