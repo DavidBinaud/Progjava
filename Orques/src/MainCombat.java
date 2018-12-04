@@ -1,7 +1,7 @@
 
 public class MainCombat {
 
-	public static void main(String[] args) {
+	public static void main(String args[]) {
 		// TODO Auto-generated method stub
 
 		Arene A1,A2;
@@ -15,6 +15,7 @@ public class MainCombat {
 		System.out.println(A1.toString());
 		A2.bataille();
 		System.out.println(A2.toString());
+		System.out.println(A1.orqueGG());
 		
 		
 			

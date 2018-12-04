@@ -4,9 +4,12 @@ public class Arene {
 	
 	public Arene(int nbo) {
 		this.ensOrques = new EE(nbo);
-
+		
+		for(int i = 0; i < nbo*2 ; i++) {
+		Arme arme = new Arme();}
 		for(int i = 0; i < nbo ; i++) {
 			Orque orc = new Orque(this);
+			
 			this.ensOrques.ajoutElt(orc.getid());
 		}
 	}
@@ -35,6 +38,8 @@ public class Arene {
 		return this.ensOrques.toString();
 	}
 	
-	
+	public String orqueGG() {
+		return Orque.getOrqueById(this.ensOrques.selectEltAleatoirement()).toString();
+	}
 }
 

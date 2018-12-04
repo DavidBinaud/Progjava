@@ -235,7 +235,6 @@ public class EE{
 		        //resultat: renvoie true ssi this est inclus dans e2, renvoie false sinon
 		        //strategie: utilise contientPratique et une boucle while
 		        int i = 0;
-		        boolean inclus = false;
 		            if ( this.cardinal > e2.cardinal){
 		                return false;
 		            }
