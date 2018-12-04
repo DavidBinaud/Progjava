@@ -1,19 +1,36 @@
 
 public class Arme {
 
-	private String [] tabArmes = {"hache","epee","lance","fléau"};
+	private static String [] tabNomsArmes = {"hachette","epee","lance","fleau","hache","halebarde","fusil","bouclier","filet"};
 	
+	private int idArme;
+
 	private int dmg;
 	
 	private int probatouch;
+
+	private static int nbArmes = 0;
+
+	private static Arme [] tabArmes = new Arme [100];
 	
 	
 	
 	public Arme() {
-		int i = Ut.randomMinMax(0, this.tabarmes.length - 1);
+		this.id = Arme.nbArmes;
+		this.nbArmes++;
+
 		
 		
 		
 		
+	}
+
+
+
+	public Arme selectionArme(){
+
+
+
+
 	}
 }

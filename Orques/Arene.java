@@ -7,32 +7,32 @@ public class Arene {
 
 		for(int i = 0; i < nbo ; i++) {
 			Orque orc = new Orque(this);
-			this.ensOrques.ajoutElt(orc.Getid());
+			this.ensOrques.ajoutElt(orc.getid());
 		}
 	}
 	
 	
 	
 	public void bataille() {
-		Orque Orq1;
-		Orque Orq2;
+		Orque orq1;
+		Orque orq2;
 		
 
-		while(ensOrques.getCardinal() != 1){
-		Orq1 = Orque.getOrqueById(this.ensOrques.selectEltAleatoirement());
-		Orq2 = Orque.getOrqueById(this.ensOrques.selectEltAleatoirement());
-		ensOrques.ajoutElt(Orq1.Combat(Orq2));
+		while(ensOrques.getCardinal() > 1){
+		orq1 = Orque.getOrqueById(this.ensOrques.selectEltAleatoirement());
+		orq2 = Orque.getOrqueById(this.ensOrques.selectEltAleatoirement());
+		this.ensOrques.ajoutElt(orq1.combat(orq2));
 		}
 	}
 
 
 
 	public int nbOrques(){
-		return Orque.GetnbOrques();
+		return Orque.getnbOrques();
 	}
 
 	public String toString(){
-		return ensOrques.toString();
+		return this.ensOrques.toString();
 	}
 	
 	

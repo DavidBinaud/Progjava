@@ -4,6 +4,20 @@ public class Orque {
 	private int id;
 	
 	private Arene arene;
+
+	private int force;
+
+	private int poids;
+
+	private int taille;
+
+	private int pdv;
+
+	private int initiative;
+
+	private int degat;
+
+	private Arme arme;
 	
 	private static int nbOrques = 0;
 	
@@ -12,14 +26,39 @@ public class Orque {
 	public Orque(Arene arene) {
 		this.id = Orque.nbOrques;
 		this.arene = arene;
-		Orque.tabOrques[this.id] = this;
 		this.nbOrques++;
+		Orque.tabOrques[this.id] = this;
+
+		this.aleatoireCarac();
+		this.arme = Arme.selectionArme();
+		this.degat=this.calculdegats();
+
 		
 	}
+
+	private void aleatoireCarac(){
+		// affecte des caracteristiques aleatoire a lorque
+		this.force = randomMinMax(1,9);
+		this.poids = randomMinMax(1,5);
+		this.taille = randomMinMax(1,5);
+		this.pdv = 20 + this.poids + this.taille;
+		this.initiative = randomMinMax(1,5);
+
+	}
+
+	
+
+
+	private int calculdegats(){
+		// calcul les degats de lorque en fonction de ses caracteristiques
+		int degat = 0;
+		return degat;
+	}
+
+
 	
 	
-	
-	public int Getid() {
+	public int getid() {
 		return this.id;
 	}
 	
@@ -28,7 +67,7 @@ public class Orque {
 		return tabOrques[ident];
 	}
 
-	public int Combat(Orque ennemi){
+	public int combat(Orque ennemi){
 		if(this.randomMinMax(1,2) == 1){
 			return this.id;
 		}
@@ -38,7 +77,7 @@ public class Orque {
 		
 	}
 
-	public static int GetnbOrques(){
+	public static int getnbOrques(){
 		return nbOrques;
 	}
 

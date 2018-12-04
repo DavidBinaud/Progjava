@@ -9,6 +9,7 @@ public class MainCombat {
 		A1 = new Arene(10);
 		A2 = new Arene(15);
 
+		System.out.println(A1.toString());
 		System.out.println(A1.nbOrques());
 		A1.bataille();
 		System.out.println(A1.toString());

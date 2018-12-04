@@ -109,7 +109,7 @@ public class EE{
 		    //p_r: aucun
 		    //resultat: renvoie -1 si x nest pas dans this sinon renvoie la position courante de x dans this(indice de ensTab)
 		    //strategie: parcours partiel
-		        int i = 0;
+		        int i = -1;
 		        int contient = -1;
 		        while (i < this.cardinal & contient == -1){
 		            i++;
