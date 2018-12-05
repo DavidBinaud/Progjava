@@ -2,11 +2,15 @@ public class Arene {
 
 	private EE ensOrques;
 	
-	public Arene(int nbo) {
+	private int taille;
+	
+	public Arene(int nbo,int x) {
+		this.taille = x;
+		
 		this.ensOrques = new EE(nbo);
 		
 		for(int i = 0; i < nbo*2 ; i++) {
-		Arme arme = new Arme();}
+		new Arme();}
 		for(int i = 0; i < nbo ; i++) {
 			Orque orc = new Orque(this);
 			
@@ -28,13 +32,16 @@ public class Arene {
 		}
 	}
 
-
+	public int getTaille() {
+		return this.taille;
+	}
 
 	public int nbOrques(){
 		return Orque.getnbOrques();
 	}
 
 	public String toString(){
+		//affichage de lArene en utilisant Fenetre , des Orques en utilisant Point, du contour arene avec Ttrait
 		return this.ensOrques.toString();
 	}
 	

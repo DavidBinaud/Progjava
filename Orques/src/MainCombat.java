@@ -6,8 +6,8 @@ public class MainCombat {
 
 		Arene A1,A2;
 		
-		A1 = new Arene(10);
-		A2 = new Arene(15);
+		A1 = new Arene(10,50);
+		A2 = new Arene(15,50);
 
 		System.out.println(A1.toString());
 		System.out.println(A1.nbOrques());

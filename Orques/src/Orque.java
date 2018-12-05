@@ -24,8 +24,14 @@ public class Orque {
 	
 	private static Orque [] tabOrques = new Orque [1000];
 	
+	private int posX;
+	
+	private int posY;
+	
+	
 	// Constructeur
 	public Orque(Arene arene) {
+		
 		this.id = Orque.nbOrques;
 		this.arene = arene;
 		Orque.nbOrques++;
@@ -52,6 +58,37 @@ public class Orque {
 		// calcul les degats de lorque en fonction de ses caracteristiques
 		int degat = this.force + this.poids + this.taille + this.arme.getDmg();
 		return degat;
+	}
+	
+	private void initPos(Orque o2) {
+		this.posX = 5;
+		this.posY = 5;
+		o2.posX = 10;
+		o2.posY = 10;
+	}
+	
+	private boolean ecart(Orque o2) {
+		
+		if (Math.abs(this.posX - o2.posX) > 1 | Math.abs(o2.posX - this.posX ) > 1 | Math.abs(this.posY - o2.posY) > 1 | Math.abs(o2.posY - this.posY ) > 1  | Math.abs(this.posX - o2.posX) > 1  ) {
+		
+		return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	private void deplacement(Orque o2) {
+		if(this.ecart(o2)) {
+			
+			
+			
+			if(this.ecart(o2)) {
+				
+			}
+			
+		}
+		
 	}
 
 	
@@ -100,15 +137,21 @@ public class Orque {
 		/*----------------------------------------------*/
 	
 		public int combat(Orque ennemi){
+			this.initPos(ennemi);
 			int init1 = this.initiative*10;
 			int init2 = ennemi.initiative*10;
 			
 			while(this.enVie() & ennemi.enVie()) {
-				if ((Orque.randomMinMax(0,99) + init1) > (Orque.randomMinMax(0,99) + init2)){
-					this.attaque(ennemi);
+				if(!this.ecart(ennemi)){
+					if ((Orque.randomMinMax(1,100) + init1) > (Orque.randomMinMax(1,100) + init2)){
+						this.attaque(ennemi);
+					}
+					else{
+						ennemi.attaque(this);
+					}
 				}
 				else{
-					ennemi.attaque(this);
+					this.deplacement(ennemi);
 				}
 			}
 			
