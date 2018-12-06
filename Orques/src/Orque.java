@@ -48,10 +48,13 @@ public class Orque {
 		// affecte des caracteristiques aleatoire a lorque
 		this.force = randomMinMax(1,9);
 		this.poids = randomMinMax(1,5);
-		this.taille = randomMinMax(1,5);
-		this.pdv = 20 + this.poids + this.taille;
+		this.taille = randomMinMax(1,5);this.resetPv();
 		this.initiative = randomMinMax(1,5);
 
+	}
+	
+	private void resetPv(){
+		this.pdv = 20 + this.poids + this.taille;
 	}
 	
 	private int calculdegats(){
@@ -137,12 +140,14 @@ public class Orque {
 		/*----------------------------------------------*/
 	
 		public int combat(Orque ennemi){
+			this.resetPv();
+			ennemi.resetPv();
 			this.initPos(ennemi);
 			int init1 = this.initiative*10;
 			int init2 = ennemi.initiative*10;
 			
 			while(this.enVie() & ennemi.enVie()) {
-				if(!this.ecart(ennemi)){
+			//	if(!this.ecart(ennemi)){
 					if ((Orque.randomMinMax(1,100) + init1) > (Orque.randomMinMax(1,100) + init2)){
 						this.attaque(ennemi);
 					}
@@ -150,10 +155,10 @@ public class Orque {
 						ennemi.attaque(this);
 					}
 				}
-				else{
+				/*else{
 					this.deplacement(ennemi);
-				}
-			}
+				}*/
+			
 			
 			
 			if (this.enVie()) 
@@ -161,6 +166,7 @@ public class Orque {
 			else 
 				{return ennemi.id;}
 		}
+	
 
 		/*----------------------------------------------*/
 		
