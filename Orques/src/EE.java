@@ -350,7 +350,9 @@ public class EE{
 		    	}
 		    
 		    
-		    
+		    public int returnVal(int x){
+		    	return this.ensTab[x];
+		    }
 		}
 
 

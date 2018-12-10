@@ -46,7 +46,7 @@ public class Arene {
 	}
 	
 	public String orqueGG() {
-		return Orque.getOrqueById(this.ensOrques.selectEltAleatoirement()).toString();
+		return Orque.getOrqueById(this.ensOrques.returnVal(0)).toString();
 	}
 }
 
