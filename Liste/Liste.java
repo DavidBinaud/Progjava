@@ -119,5 +119,61 @@ public class Liste{
         //resultat: vrai ssi la longueur de la liste this est superieure a k
         
     }
+    
+    public boolean estLgPaire(){
+    //resultat: vrai ssi la liste this possede un nombre paire d elt'
+    return this.longueur() div 2 == 0;
+    }
+    
+    public int valMax(){
+        //prerequis: la liste this est non vide
+        //resultat: la valeur maximum des elt de this
+        Maillon courant = this.tete;
+        int max = courant.getVal();
+        while(courant != null){
+            if (courant.getVal() > max]{
+                max = courant.getVal();
+            }
+            courant = courant.getSuiv();
+        }
+        return int max;
+    }
+    
+    public int nbX (int x){
+        Maillon courant = this.tete;
+        int nbx = 0;
+        while(courant != null){
+            if(courant.getVal() = x){
+                nbx++;
+            }
+            courant = courant.getSuiv();
+        }
+        return nbx;
+    }
+    
+    public void ajoutFinSiAbsent(int n){
+        //action: ajoute un entier de valeur n comme dernier element de la liste this au cas ou la liste ne possede pas deja un element valabt n
+        if(this.nbX > 0){
+            this.ajoutFin(n);
+        }
+    }
+    
+    public Liste extractionImpairs(){
+        //resultat: une nouvelle liste contenant les valeurs impairs de this dans chacun des deux cas suivants: a) lordre des elements de la liste retournee na pas dimportance b) lordre doit etre le meme que dans this 
+        
+    }
+    
+    public void suprElt(int n){
+        //action:supprime de la liste this la premiere occurence de lentier n
+        //strat:parcours partiel
+        Maillon courant = this.tete;
+        boolean supr = false;
+        while(courant != null && !supr){
+            if(courant.getVal() == n){
+                courant.setVal()=null;
+            }
+            else(courant = courant.getSuiv();
+        }
+    }
 
 }
