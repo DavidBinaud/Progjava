@@ -85,5 +85,39 @@ public class Liste{
 		return cpt;
 	}
 
+    
+    public int somme(){
+        //resultat: somme des elements de this
+        int som = 0;
+        Maillon courant =this.tete;
+        while(courant != null){
+            som += courant.getVal();
+            courant = courant.getSuiv();
+        }
+    }
+    
+    
+    public int dernierElt(){
+        //prerequis: this est non vide
+        //resultat: renvoie la valeur du dernier element de la liste this
+        Maillont courant = this.tete;
+        while(courant.getSuiv() != null){
+            courant = courant.getSuiv();
+        }
+        return courant.getVal();
+    }
+    
+    
+    public boolean estSupK(int k){
+        // prerequis: k est un entier positif
+        // resultat: vrai ssi la longueur de la liste this est superieure a k
+        return this.longueur() > k ;
+    }
+    
+    public boolean estSupKBis(int k){
+        //prerequis: k est un entier positif
+        //resultat: vrai ssi la longueur de la liste this est superieure a k
+        
+    }
 
 }
