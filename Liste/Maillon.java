@@ -1,35 +1,40 @@
-public class Maillon{
-	// attributs
 
-	private int valeur;
+public class Maillon {
 
-	private Maillon suivant;
+    private int valeur; 
+    private Maillon suivant;
 
+    /** Constructeur vide */
+    public Maillon () { 
+	suivant = null; 
+    }
 
+    /** Constructeur avec une valeur */
+    public Maillon (int n) { 
+	valeur = n;
+	suivant = null; 
+    }
 
-	//constructeurs
+    public int getVal() {
+	return this.valeur;
+    }
 
-	public Maillon(int x){
-		//action:construit un Maillon de valeur x
-		this.valeur = x;
-		this.suivant = null;
-	}
+    public void setVal(int v) {
+	this.valeur = v;
+    }
 
-	//méthodes
-	public int getVal(){
-		return this.valeur;
-	}
+    public Maillon getSuiv () {
+	return this.suivant;
+    }
 
-	public Maillon getSuiv(){
-		return this.suivant;
-	}
+    public void setSuiv (Maillon m) {
+	this.suivant = m;
+    }
 
-	public void setVal(int x){
-		this.valeur = x;
-	}
+    public String toString () {
+	return Integer.toString(this.valeur);
+    }
 
-	public void setSuiv(Maillon m){
-		//action: this.suivant prends le maillon
-		this.suivant = m;
-	}
+    /* -------------------------------------------------- */
+
 }
