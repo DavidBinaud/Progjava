@@ -1,60 +1,182 @@
-public class Liste{
-	//attribut
-	private Maillon tete;
 
-	//constructeurs
-	public Liste(){
-		//action: construit une liste vide
-		this.tete = null;
+public class Liste {
+
+    private Maillon tete; 
+
+    private int longueur;
+
+    private Maillon dernier;
+
+    /** Constructeur d'une liste vide
+     */
+    public Liste () {
+    this.tete = null;
+    }
+
+    /** Constructeur d'une liste a un seul element
+     */
+    public Liste (int x) { 
+        this.tete=new Maillon(x);
+    }
+    
+  /** @param tabListe est un tableau contenant les elements de la liste
+     * Pre-requis : aucun
+     */
+    public Liste (int[] tabListe) {
+	this(); 
+	if (tabListe.length > 0) {
+	    this.tete = new Maillon (tabListe[0]);
+	    Maillon curThis = this.tete;
+	    for (int i = 1 ; i < tabListe.length ; i++) {
+		curThis.setSuiv (new Maillon(tabListe[i])); // creation et accrochage du maillon suivant
+		curThis = curThis.getSuiv();
+	    }
 	}
+    }
 
-	public Liste(int x){
-		//action: construit une liste avec un seul élement x
-		this.tete = new Maillon(x);
+   /**
+     * Prerequis: aucun
+     * construit une liste completement disjointe de la liste l 
+     */
+    public Liste (Liste l) { // constructeur par recopie profonde
+	this(); 
+	if (! l.estVide()) {
+
+	    this.tete = new Maillon (l.tete.getVal());
+	    Maillon curThis = this.tete;
+	    Maillon curL = l.tete.getSuiv();
+
+	    while (curL != null) {
+		curThis.setSuiv (new Maillon(curL.getVal())); // creation et accrochage du maillon suivant
+		curThis = curThis.getSuiv();
+		curL = curL.getSuiv();
+	    }
 	}
+    }
 
-	public Liste(int[] tab){
-		//action: construit une liste contennant les valeurs de tab
-		Maillon courant;
-		this();
-		if(tab.length > 0){
-			this.tete = new Maillon(tab[0]);
-			courant = this.tete;
-			for(int i=1; i < tab.length;i++){
-				courant.setSuiv(new Maillon (tab[i]));
-				courant = courant.getSuiv();
-			}
+    public boolean estVide() {
+	return (this.tete == null) ;
+    }
+
+    public void ajoutTete (int x) {
+	Maillon m = new Maillon(x);
+	m.setSuiv(this.tete);
+	this.tete=m;
+    }
+
+    public boolean contient (int x) {
+	Maillon courant = this.tete;
+	while (courant != null && courant.getVal() != x) {
+	    courant = courant.getSuiv(); 
+	}
+	return courant != null;
+    }
+
+    public String toString() {
+	String s = "(";
+	Maillon courant = this.tete;
+	while (courant != null) {
+	    s = s + (courant.getVal()) + ((courant.getSuiv() != null)?", ":"");
+	    courant = courant.getSuiv();
+	}
+	return s + ")";
+    }
+
+
+    public int longueur(){
+		//resultat: retourne le nb d'elements de this.
+		int cpt = 0;
+		Maillon courant = this.tete;
+		while(courant != null){
+			cpt++;
+			courant = courant.getSuiv();
 		}
+		return cpt;
 	}
 
-	//Variante 2
-	public Liste (int[] tab){
-		//action: construit une liste avec les elements de tab
-		//stratégie: utilise ajoutTete
-		this();
-		for(int i = tab.length - 1;i >=0 ; i--){
-			this.ajoutTete(tab[i]);
-		}
-	}
 
-	public void ajoutTete (int x){
-		//action: ajoute x en tete de this
-		Maillon m = new Maillon(x);
-		m.setSuiv(this.tete);
-		this.tete = m;
-	}
+	public int somme(){
+        //resultat: somme des elements de this
+        int som = 0;
+        Maillon courant =this.tete;
+        while(courant != null){
+            som += courant.getVal();
+            courant = courant.getSuiv();
+        }
+        return som;
+    }
 
-	//Variante 3
-	public Liste(int []tab){
-		//action: construit une liste contennat les elements de tab
-		//stratégie: utilise ajoutFin // Pas efficace
-		this();
-		for(int i = 0; i < tab.length ; i++){
-			this.ajoutFin(tab[i]);
-		}
-	}
 
-	public void ajoutFin(int x){
+    public int dernierElt(){
+        //prerequis: this est non vide
+        //resultat: renvoie la valeur du dernier element de la liste this
+        Maillon courant = this.tete;
+        while(courant.getSuiv() != null){
+            courant = courant.getSuiv();
+        }
+        return courant.getVal();
+    }
+
+
+    public boolean estSupK(int k){
+        // prerequis: k est un entier positif
+        // resultat: vrai ssi la longueur de la liste this est superieure a k
+        return this.longueur() > k ;
+    }
+
+
+
+    public boolean estSupKBis(int k){
+        //prerequis: k est un entier positif
+        //resultat: vrai ssi la longueur de la liste this est superieure a k
+        int cpt = 0;
+        Maillon courant = this.tete;
+        while(courant != null & cpt < k){
+            cpt++;
+            courant = courant.getSuiv();
+        }
+        return cpt >= k;
+    }
+
+
+
+
+     public boolean estLgPaire(){
+    //resultat: vrai ssi la liste this possede un nombre paire d elt'
+    return this.longueur() % 2 == 0;
+    }
+
+
+
+    public int valMax(){
+        //prerequis: la liste this est non vide
+        //resultat: la valeur maximum des elt de this
+        Maillon courant = this.tete;
+        int max = courant.getVal();
+        while(courant != null){
+            if (courant.getVal() > max){
+                max = courant.getVal();
+            }
+            courant = courant.getSuiv();
+        }
+        return max;
+    }
+
+
+    public int nbOccurence(int x){
+        Maillon courant = this.tete;
+        int nbx = 0;
+        while(courant != null){
+            if(courant.getVal() == x){
+                nbx++;
+            }
+            courant = courant.getSuiv();
+        }
+        return nbx;
+    }
+
+
+    public void ajoutFin(int x){
 		//action: ajoute x en fin de this
 		if(this.estVide()){
 			this.tete = new Maillon(x); // ou this.ajoutTete
@@ -68,22 +190,65 @@ public class Liste{
 		}
 	}
 
-	public boolean estVide(){
-		//resultat: retourne vrai ssi this est vide
-		return this.tete == null;
-	}
+
+	public void ajoutFinSiAbsent(int n){
+        //action: ajoute un entier de valeur n comme dernier element de la liste this au cas ou la liste ne possede pas deja un element valabt n
+        if(!this.contient(n)){
+            this.ajoutFin(n);
+        }
+    }
 
 
-	public int longueur(){
-		//resultat: retourne le nb d'elements de this.
-		int cpt = 0;
-		Maillon courant = this.tete;
-		while(courant != null){
-			cpt++;
-			courant = courant.getSuiv();
-		}
-		return cpt;
-	}
+    public Liste extractionImpairs(){
+        //resultat: une nouvelle liste contenant les valeurs impairs de this dans chacun des deux cas suivants: a) lordre des elements de la liste retournee na pas dimportance b) lordre doit etre le meme que dans this 
+        Maillon courant = this.tete;
+        Liste l2 = new Liste();
+        while(courant != null){
+            if(courant.getVal() % 2 != 0){
+                l2.ajoutFin(courant.getVal());
+            }
+            courant = courant.getSuiv();
+        }
+        return l2;
+    }
+
+     public Liste extractionImpairsBis(){
+        //resultat: une nouvelle liste contenant les valeurs impairs de this dans chacun des deux cas suivants: a) lordre des elements de la liste retournee na pas dimportance b) lordre doit etre le meme que dans this 
+        Maillon courant = this.tete;
+        Liste l2 = new Liste(this);
+        while(courant != null){
+            if(courant.getVal() % 2 != 0){
+                l2.suprElt(courant.getVal());
+            }
+            courant = courant.getSuiv();
+        }
+        return l2;
+    }
 
 
-}
+     public void suprElt(int n){
+        //action:supprime de la liste this la premiere occurence de lentier n
+        //strat:parcours partiel
+        Maillon precedent = null;
+        Maillon courant = this.tete;
+        boolean supr = false;
+        while(courant != null && !supr){
+            if(courant.getVal() == n){
+                if(courant.getSuiv() != null){
+                    precedent.setSuiv(courant.getSuiv());
+                }
+                else{
+                    precedent.setSuiv(null);
+                }
+                supr = true;
+            }
+            else{
+                courant = courant.getSuiv();
+                    precedent = courant;
+                    
+                
+            }
+        }
+    }
+
+} // end class
