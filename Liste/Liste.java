@@ -202,10 +202,23 @@ public class Liste {
     public Liste extractionImpairs(){
         //resultat: une nouvelle liste contenant les valeurs impairs de this dans chacun des deux cas suivants: a) lordre des elements de la liste retournee na pas dimportance b) lordre doit etre le meme que dans this 
         Maillon courant = this.tete;
-        Liste l2 = new Liste(this.longueur());
+        Liste l2 = new Liste();
         while(courant != null){
             if(courant.getVal() % 2 != 0){
                 l2.ajoutFin(courant.getVal());
+            }
+            courant = courant.getSuiv();
+        }
+        return l2;
+    }
+
+     public Liste extractionImpairsBis(){
+        //resultat: une nouvelle liste contenant les valeurs impairs de this dans chacun des deux cas suivants: a) lordre des elements de la liste retournee na pas dimportance b) lordre doit etre le meme que dans this 
+        Maillon courant = this.tete;
+        Liste l2 = new Liste(this);
+        while(courant != null){
+            if(courant.getVal() % 2 != 0){
+                l2.suprElt(courant.getVal());
             }
             courant = courant.getSuiv();
         }
@@ -216,13 +229,25 @@ public class Liste {
      public void suprElt(int n){
         //action:supprime de la liste this la premiere occurence de lentier n
         //strat:parcours partiel
+        Maillon precedent = null;
         Maillon courant = this.tete;
         boolean supr = false;
         while(courant != null && !supr){
             if(courant.getVal() == n){
-                courant.setVal(0);
+                if(courant.getSuiv() != null){
+                    precedent.setSuiv(courant.getSuiv());
+                }
+                else{
+                    precedent.setSuiv(null);
+                }
+                supr = true;
             }
-            else{courant = courant.getSuiv();}
+            else{
+                courant = courant.getSuiv();
+                    precedent = courant;
+                    
+                
+            }
         }
     }
 

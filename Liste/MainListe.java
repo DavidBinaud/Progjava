@@ -3,6 +3,9 @@ public class MainListe {
 
     public static void main (String args[]) {
 
+
+    MainListe.clearScreen();
+
 	Liste L1 = new Liste(3);
 	L1.ajoutTete(2);
 	L1.ajoutTete(6);
@@ -51,10 +54,17 @@ public class MainListe {
 	System.out.println("Nombre d'occurence de 6 dans L2: " + L2.nbOccurence(6));
 
 	System.out.println("Impairs de L2: " + L2.extractionImpairs().toString());
+
+	Liste L2Impair = new Liste (L2.extractionImpairs());
+	L2Impair.suprElt(5);
+	System.out.println("impairs de L2 - le premier 5" + L2Impair.toString());
 	// ...
 	int[] tab3 = {-3, -3, -8, -3, -3, 6, -3, 5, -3, 8, -3}; 
 	Liste L3 = new Liste (tab3);
 	System.out.println("L3 = " + L3);
+
+	L3.suprElt(6);
+	System.out.println("suppression de 6 dans L3" + L3.toString());
 	// L3.suppToutesOcc(-3);  
 	// System.out.println("SuppToutesOcc de L3 = " + L3);
 
@@ -71,4 +81,11 @@ public class MainListe {
 	// Liste L9 = new Liste (tab9);
 	// System.out.println("L8 = " + L8 + " L9 = " + L9 + " Sous Liste ? " + L8.sousListe(L9));
     }
+
+
+    public static void clearScreen() {  
+    System.out.print("\033[H\033[2J");  
+    System.out.flush();  
+	}  
+
 }
