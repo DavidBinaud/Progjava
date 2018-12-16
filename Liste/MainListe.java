@@ -4,7 +4,7 @@ public class MainListe {
     public static void main (String args[]) {
 
 
-    MainListe.clearScreen();
+    clearScreen();
 
 	Liste L1 = new Liste(3);
 	L1.ajoutTete(2);
@@ -65,8 +65,16 @@ public class MainListe {
 
 	L3.suprElt(6);
 	System.out.println("suppression de 6 dans L3" + L3.toString());
-	// L3.suppToutesOcc(-3);  
-	// System.out.println("SuppToutesOcc de L3 = " + L3);
+
+	L3.troncK(4);
+	System.out.println("troncation de L3 après le 4ème élément: " + L3.toString());
+	System.out.println("L2 et L3 clones? " + L2.Clones(L3));
+	System.out.println("inverse de L3:" + L3.inverse().toString());
+
+
+	//System.out.println(L3.extractionImpairsBis().toString());
+	L3.suppToutesOcc(-3);  
+	System.out.println("SuppToutesOcc de L3 = " + L3.toString());
 
 	// ...
 	// int[] tab6 = {8, 8, 6}; 

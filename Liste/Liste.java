@@ -220,7 +220,6 @@ public class Liste {
             if(courant.getVal() % 2 != 0){
                 l2.suprElt(courant.getVal());
             }
-            courant = courant.getSuiv();
         }
         return l2;
     }
@@ -234,21 +233,73 @@ public class Liste {
         boolean supr = false;
         while(courant != null && !supr){
             if(courant.getVal() == n){
-                if(courant.getSuiv() != null){
-                    precedent.setSuiv(courant.getSuiv());
-                }
-                else{
-                    precedent.setSuiv(null);
-                }
+                if(courant != this.tete){ precedent.setSuiv(courant.getSuiv());}
+                else{ this.tete = courant.getSuiv();
+                        courant= courant.getSuiv();}
                 supr = true;
             }
             else{
+                precedent = courant;
                 courant = courant.getSuiv();
-                    precedent = courant;
+                    
                     
                 
             }
         }
     }
+
+    public void troncK(int n){
+        Maillon courant = this.tete;
+        int i = 1;
+        while (courant != null){
+            if(i < n){
+                courant = courant.getSuiv();
+            }
+            else{
+                courant.setSuiv(null);
+            }
+            i++;
+        }
+
+    }
+
+
+
+    public boolean Clones(Liste L2){
+        Maillon courant = this.tete;
+        Maillon courantL2 = L2.tete;
+        boolean Same = true;
+        while( courant != null & courantL2 != null & Same){
+            if(courant.getVal() == courantL2.getVal()){
+                courant = courant.getSuiv();
+                courantL2 = courantL2.getSuiv();
+            }
+            else{
+                Same = false;
+            }
+        }
+        return Same;
+    }
+
+    public Liste inverse(){
+        //resultat: une nouvelle liste contenant les éléments de this dans l'ordre inverse
+        Maillon courant= this.tete;
+        Liste L2 = new Liste();
+        while(courant != null){
+            L2.ajoutTete(courant.getVal());
+            courant = courant.getSuiv();
+        }
+        return L2;
+    }
+
+    public void suppToutesOcc(int n){
+        //action: supprime de la liste this toutes les occurrences d'un entier n.
+        int nombre = this.nbOccurence(n);
+        while(nombre > 0){
+            this.suprElt(n);
+            nombre--;
+        }
+    }
+
 
 } // end class
