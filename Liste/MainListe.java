@@ -26,6 +26,7 @@ public class MainListe {
 	System.out.println("L2copie = " + L2copie);
 	L2copie.ajoutFin(15);
 	L2copie.ajoutFinSiAbsent(15);
+	L2copie.ajoutFin(44);
 	System.out.println("L2copie = " + L2copie);
 
 	System.out.println("Longueur de L1 = " + L1.longueur());
@@ -39,6 +40,7 @@ public class MainListe {
 
 	System.out.println("Dernier Element de L1 = " + L1.dernierElt());
 	System.out.println("Dernier Element de L2 = " + L2.dernierElt());
+	System.out.println("Dernier Element de L2 = " + L2.dernierEltBis());
 
 	System.out.println("Nombre d'element de L1 supérieur à 5: " + L1.estSupK(5));
 	System.out.println("Nombre d'element de L2 supérieur à 5: " + L2.estSupK(5));
@@ -47,7 +49,9 @@ public class MainListe {
 	System.out.println("BIS: Nombre d'element de L2 supérieur à 5: " + L2.estSupKBis(5));
 
 	System.out.println("L1 longueur Paire: " + L1.estLgPaire());
-	System.out.println("L2 Longueur paire: " + L2.estLgPaire());
+	System.out.println("L1 longueur Paire: " + L1.estLgPaireBis());
+	System.out.println("impairs de L2 Longueur paire: " + L2.extractionImpairs().estLgPaire());
+	System.out.println("L2 Longueur paire: " + L2.estLgPaireBis());
 
 	
 	System.out.println("Nombre d'occurence de 2 dans L1: " + L1.nbOccurence(2));

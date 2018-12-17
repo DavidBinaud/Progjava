@@ -11,12 +11,16 @@ public class Liste {
      */
     public Liste () {
     this.tete = null;
+    this.longueur = 0;
+    this.dernier = null;
     }
 
     /** Constructeur d'une liste a un seul element
      */
     public Liste (int x) { 
         this.tete=new Maillon(x);
+        this.longueur =1;
+        this.dernier = this.tete;
     }
     
   /** @param tabListe est un tableau contenant les elements de la liste
@@ -27,10 +31,13 @@ public class Liste {
 	if (tabListe.length > 0) {
 	    this.tete = new Maillon (tabListe[0]);
 	    Maillon curThis = this.tete;
+	    this.longueur++;
 	    for (int i = 1 ; i < tabListe.length ; i++) {
 		curThis.setSuiv (new Maillon(tabListe[i])); // creation et accrochage du maillon suivant
 		curThis = curThis.getSuiv();
+		this.longueur++;
 	    }
+	   	this.dernier = curThis;
 	}
     }
 
@@ -45,12 +52,15 @@ public class Liste {
 	    this.tete = new Maillon (l.tete.getVal());
 	    Maillon curThis = this.tete;
 	    Maillon curL = l.tete.getSuiv();
+	    this.longueur++;
 
 	    while (curL != null) {
 		curThis.setSuiv (new Maillon(curL.getVal())); // creation et accrochage du maillon suivant
 		curThis = curThis.getSuiv();
 		curL = curL.getSuiv();
+		this.longueur++;
 	    }
+	    this.dernier = curThis;
 	}
     }
 
@@ -62,6 +72,7 @@ public class Liste {
 	Maillon m = new Maillon(x);
 	m.setSuiv(this.tete);
 	this.tete=m;
+	this.longueur++;
     }
 
     public boolean contient (int x) {
@@ -117,6 +128,10 @@ public class Liste {
         return courant.getVal();
     }
 
+    public int dernierEltBis(){
+    	return this.dernier.getVal();
+    }
+
 
     public boolean estSupK(int k){
         // prerequis: k est un entier positif
@@ -144,6 +159,10 @@ public class Liste {
      public boolean estLgPaire(){
     //resultat: vrai ssi la liste this possede un nombre paire d elt'
     return this.longueur() % 2 == 0;
+    }
+
+    public boolean estLgPaireBis(){
+    	return this.longueur % 2 == 0;
     }
 
 
@@ -190,11 +209,22 @@ public class Liste {
 		}
 	}
 
+	public void ajoutFinBis(int x){
+		if(this.estVide()){
+			this.tete = new Maillon(x);
+		}
+		else{
+			Maillon courant = this.dernier;
+			courant.setSuiv(new Maillon(x));
+		}
+
+	}
+
 
 	public void ajoutFinSiAbsent(int n){
         //action: ajoute un entier de valeur n comme dernier element de la liste this au cas ou la liste ne possede pas deja un element valabt n
         if(!this.contient(n)){
-            this.ajoutFin(n);
+            this.ajoutFin(n); // this.ajoutFinBis(n);
         }
     }
 
@@ -301,5 +331,13 @@ public class Liste {
         }
     }
 
+
+    public boolean sousListe(Liste l){
+    	//resultat: renvoie vrai ssi This est un sous ensemble de l
+    	
+
+
+
+    }
 
 } // end class
