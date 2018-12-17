@@ -247,9 +247,10 @@ public class Liste {
         Maillon courant = this.tete;
         Liste l2 = new Liste(this);
         while(courant != null){
-            if(courant.getVal() % 2 != 0){
+            if(courant.getVal() % 2 == 0){
                 l2.suprElt(courant.getVal());
             }
+            courant = courant.getSuiv();
         }
         return l2;
     }
@@ -264,8 +265,7 @@ public class Liste {
         while(courant != null && !supr){
             if(courant.getVal() == n){
                 if(courant != this.tete){ precedent.setSuiv(courant.getSuiv());}
-                else{ this.tete = courant.getSuiv();
-                        courant= courant.getSuiv();}
+                else{ this.tete = courant.getSuiv();}
                 supr = true;
             }
             else{
@@ -298,17 +298,17 @@ public class Liste {
     public boolean Clones(Liste L2){
         Maillon courant = this.tete;
         Maillon courantL2 = L2.tete;
-        boolean Same = true;
-        while( courant != null & courantL2 != null & Same){
+        boolean same = true;
+        while( courant != null & courantL2 != null & same){
             if(courant.getVal() == courantL2.getVal()){
                 courant = courant.getSuiv();
                 courantL2 = courantL2.getSuiv();
             }
             else{
-                Same = false;
+                same = false;
             }
         }
-        return Same;
+        return same;
     }
 
     public Liste inverse(){
@@ -333,11 +333,39 @@ public class Liste {
 
 
     public boolean sousListe(Liste l){
-    	//resultat: renvoie vrai ssi This est un sous ensemble de l
-    	
-
-
-
+    	//resultat: renvoie vrai ssi This est un sous ensemble de l (sous liste consécutive)
+    	Maillon courant = this.tete;
+        Maillon courantL2 = l.tete;
+        boolean sousL = false;
+        while( courant != null & courantL2 != null & !sousL){
+           if(courant.getVal() == courantL2.getVal()){
+               sousL = this.appartientListe(courantL2);
+            }
+            
+            courantL2 = courantL2.getSuiv();
+            
+        }
+        return sousL;
     }
+
+
+    public boolean appartientListe(Maillon m){
+        Maillon courant = this.tete;
+        Maillon courantM = m;
+        while(courant != null & courantM != null){
+            if(courant.getVal() == courantM.getVal()){
+                courant = courant.getSuiv();
+                courantM = courantM.getSuiv();
+            }
+            else{courantM = null;}
+          
+        }
+
+        return courant == null;
+    }
+
+
+
+    
 
 } // end class
