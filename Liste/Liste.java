@@ -298,17 +298,17 @@ public class Liste {
     public boolean Clones(Liste L2){
         Maillon courant = this.tete;
         Maillon courantL2 = L2.tete;
-        boolean Same = true;
-        while( courant != null & courantL2 != null & Same){
+        boolean same = true;
+        while( courant != null & courantL2 != null & same){
             if(courant.getVal() == courantL2.getVal()){
                 courant = courant.getSuiv();
                 courantL2 = courantL2.getSuiv();
             }
             else{
-                Same = false;
+                same = false;
             }
         }
-        return Same;
+        return same;
     }
 
     public Liste inverse(){
@@ -334,7 +334,20 @@ public class Liste {
 
     public boolean sousListe(Liste l){
     	//resultat: renvoie vrai ssi This est un sous ensemble de l
-    	
+    	Maillon courant = this.tete;
+        Maillon courantL2 = L2.tete;
+        boolean sousL= false;
+        while( courant != null & courantL2 != null & !sousL){
+            if(courant.getVal() == courantL2.getVal()){
+                courant = courant.getSuiv();
+                courantL2 = courantL2.getSuiv();
+            }
+            else{
+                sousL = true;
+            }
+        }
+        return sousL;
+    }
 
 
 
