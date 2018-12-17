@@ -4,7 +4,7 @@ public class MainListe {
     public static void main (String args[]) {
 
 
-    clearScreen();
+    clearConsole();
 
 	Liste L1 = new Liste(3);
 	L1.ajoutTete(2);
@@ -76,28 +76,28 @@ public class MainListe {
 	System.out.println("inverse de L3:" + L3.inverse().toString());
 
 
-	//System.out.println(L3.extractionImpairsBis().toString());
+	System.out.println("Impair de L3" + L3.extractionImpairsBis().toString());
 	L3.suppToutesOcc(-3);  
-	System.out.println("SuppToutesOcc de L3 = " + L3.toString());
+	System.out.println("SuppToutesOcc de -3 dans L3 = " + L3.toString());
 
-	// ...
-	// int[] tab6 = {8, 8, 6}; 
-	// Liste L6 = new Liste (tab6);
-	// int[] tab7 = {1, 5, 8, 8, 4, 6, 8, 6, 4}; 
-	// Liste L7 = new Liste (tab7);
-	// System.out.println("L6 = " + L6 + " L7 = " + L7 + " Sous Liste ? "  + L6.sousListe(L7));
+	
+	 int[] tab6 = {8, 8, 6}; 
+	 Liste L6 = new Liste (tab6);
+	 int[] tab7 = {1, 5, 8, 8, 4, 6, 8, 6, 4}; 
+	 Liste L7 = new Liste (tab7);
+	 System.out.println("L6 = " + L6 + " L7 = " + L7 + " Sous Liste ? "  + L6.sousListe(L7));
 
-	// int[] tab8 = {8, 8, 6}; 
-	// Liste L8 = new Liste (tab8);
-	// int[] tab9 = {1, 5, 8, 8, 4, 6, 8, 8, 6, 4}; 
-	// Liste L9 = new Liste (tab9);
-	// System.out.println("L8 = " + L8 + " L9 = " + L9 + " Sous Liste ? " + L8.sousListe(L9));
+	 int[] tab8 = {8, 8, 6}; 
+	 Liste L8 = new Liste (tab8);
+	 int[] tab9 = {1, 5, 8, 8, 4, 6, 8, 8, 6, 4}; 
+	 Liste L9 = new Liste (tab9);
+	 System.out.println("L8 = " + L8 + " L9 = " + L9 + " Sous Liste ? " + L8.sousListe(L9));
     }
 
 
-    public static void clearScreen() {  
-    System.out.print("\033[H\033[2J");  
-    System.out.flush();  
-	}  
+    public static void clearConsole () {
+	// Action : efface la console (le terminal)
+	System.out.print("\033[H\033[2J");
+    }
 
 }
