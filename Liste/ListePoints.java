@@ -70,4 +70,14 @@ public class ListePoints {
     public boolean estVide() {
     return (this.tete == null) ;
     }
+    
+    public Point getTetePoint() {
+    	return this.tete.getPoint();
+    }
+    
+    
+    
+    public Point getDernierPoint() {
+    	return this.dernier.getPoint();
+    }
 } // end class
