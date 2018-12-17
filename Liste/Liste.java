@@ -338,12 +338,12 @@ public class Liste {
         Maillon courantL2 = l.tete;
         boolean sousL = false;
         while( courant != null & courantL2 != null & !sousL){
-            if(courant.getVal() == courantL2.getVal()){
+           if(courant.getVal() == courantL2.getVal()){
                sousL = this.appartientListe(courantL2);
             }
-            else{
-                courantL2 = courantL2.getSuiv();
-            }
+            
+            courantL2 = courantL2.getSuiv();
+            
         }
         return sousL;
     }
@@ -357,6 +357,7 @@ public class Liste {
                 courant = courant.getSuiv();
                 courantM = courantM.getSuiv();
             }
+            else{courantM = null;}
           
         }
 
