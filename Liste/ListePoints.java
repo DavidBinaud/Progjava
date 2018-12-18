@@ -71,6 +71,10 @@ public class ListePoints {
     return (this.tete == null) ;
     }
     
+    public MaillonPoint getTete() {
+        return this.tete;
+    }
+
     public Point getTetePoint() {
     	return this.tete.getPoint();
     }

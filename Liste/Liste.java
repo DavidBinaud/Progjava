@@ -153,6 +153,12 @@ public class Liste {
         return cpt >= k;
     }
 
+    public boolean estSupKTer(int k){
+        // prerequis: k est un entier positif
+        // resultat: vrai ssi la longueur de la liste this est superieure a k
+        return this.longueur > k ;
+    }
+
 
 
 
@@ -331,9 +337,30 @@ public class Liste {
         }
     }
 
+    public void suppToutesOccOpti(int n){
+        //action:supprime de la liste this la premiere occurence de lentier n
+        //strat:parcours partiel
+        Maillon precedent = null;
+        Maillon courant = this.tete;
+        boolean supr = false;
+        while(courant != null){
+            if(courant.getVal() == n){
+                if(courant != this.tete){ precedent.setSuiv(courant.getSuiv());}
+                else{ this.tete = courant.getSuiv();}
+            }
+            else{
+                precedent = courant;
+                courant = courant.getSuiv();
+                    
+                    
+                
+            }
+        }
+    }
+
 
     public boolean sousListe(Liste l){
-    	//resultat: renvoie vrai ssi This est un sous ensemble de l (sous liste consécutive)
+    	//resultat: renvoie vrai ssi This est un sous ensemble de l (sous liste ordonnée consécutive)
     	Maillon courant = this.tete;
         Maillon courantL2 = l.tete;
         boolean sousL = false;
@@ -362,6 +389,25 @@ public class Liste {
         }
 
         return courant == null;
+    }
+
+
+
+
+    public boolean sousListeTer(Liste l2){
+        Maillon courant = this.tete;
+        Maillon courantl2 = l2.tete;
+            while (courant != null & courantl2 != null){
+                if (courant.getVal() == courantl2.getVal()){
+                    courant = courant.getSuiv();
+                    courantl2 = courantl2.getSuiv();
+                }
+                else{
+                    courantl2 = courantl2.getSuiv();
+                }
+            }
+
+            return courant == null;
     }
 
 

@@ -14,10 +14,16 @@ public class Polygone{
 
 	}
 	
-	public Polygone(ListePoints lP){
-		this.c = new Color(0,0,0);
+	public Polygone(ListePoints lP,int r,int g,int b){
+		this.c = new Color(r,g,b);
 		this.listeP = new ListePoints(lP);
-		Trait trait = new Trait(listeP.getTetePoint(),listeP.getDernierPoint(),5,6,9);
+		MaillonPoint precedent = null;
+		MaillonPoint courant = this.listeP.getTete();
+		while(courant != null){
+		Trait trait = new Trait(courant.getPoint(),precedent.getPoint(),c.getRed(),c.getGreen(),c.getBlue());
+		precedent = courant;
+		courant = courant.getSuiv();
+		}
 
 	}
 

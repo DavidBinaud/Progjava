@@ -16,7 +16,7 @@ public class MainPolygone{
 		clearConsole();
 		Point [] tabP = new Point [] {j,t,u,i,o,k};
 		ListePoints lP= new ListePoints(tabP);
-		Polygone p1 = new Polygone(lP);
+		Polygone p1 = new Polygone(lP,0,0,0);
 
 
 
